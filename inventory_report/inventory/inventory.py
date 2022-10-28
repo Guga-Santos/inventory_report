@@ -1,4 +1,5 @@
 import csv
+import json
 
 from ..reports.complete_report import CompleteReport
 from ..reports.simple_report import SimpleReport
@@ -18,3 +19,6 @@ class Inventory:
         if list.endswith(".csv"):
             with open(list, encoding="utf-8") as data:
                 return [*csv.DictReader(data)]
+        if list.endswith(".json"):
+            with open(list) as data:
+                return json.load(data)
