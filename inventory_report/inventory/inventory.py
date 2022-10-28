@@ -1,8 +1,10 @@
 import csv
 import json
 
-from ..reports.complete_report import CompleteReport
-from ..reports.simple_report import SimpleReport
+import xmltodict
+
+from inventory_report.reports.complete_report import CompleteReport
+from inventory_report.reports.simple_report import SimpleReport
 
 
 class Inventory:
@@ -22,3 +24,6 @@ class Inventory:
         if list.endswith(".json"):
             with open(list) as data:
                 return json.load(data)
+        if list.endswith(".xml"):
+            with open(list) as data:
+                return xmltodict.parse(data.read())["dataset"]["record"]
