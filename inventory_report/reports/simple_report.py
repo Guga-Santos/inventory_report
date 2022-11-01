@@ -13,7 +13,7 @@ class SimpleReport:
     def generate(cls, data):
         now = date.today().isoformat()
 
-        min_fabr_date = min(product["data_de_fabricacao"] for product in data)
+        min_fabr = min(product["data_de_fabricacao"] for product in data)
 
         company = mode(product["nome_da_empresa"] for product in data)
 
@@ -21,7 +21,7 @@ class SimpleReport:
                             if product["data_de_validade"] > now])
 
         return (
-              f"Data de fabricação mais antiga: {min_fabr_date}\n"
+              f"Data de fabricação mais antiga: {min_fabr}\n"
               f"Data de validade mais próxima: {min_val_date}\n"
               f"Empresa com mais produtos: {company}"
           )

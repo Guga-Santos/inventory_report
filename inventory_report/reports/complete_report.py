@@ -1,6 +1,12 @@
+import csv
 from collections import Counter
 
 from .simple_report import SimpleReport
+
+
+def read(path):
+    with open(path, encoding="utf-8") as data:
+        return [*csv.DictReader(data)]
 
 
 class CompleteReport(SimpleReport):
